@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Express Racers</title>
+</head>
+<body>
+  <h1>Racers as of <%= time %></h1>
+  <ul>
+    <% racers.forEach(racer => { %>
+      <li>
+        <form 
+          action="/racers/<%= racer._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+        <a href="/racers/<%= racer._id %>"><%= racer.name %></a>
+        -
+        <%= racer.champ ? 'champ' : 'not champ' %>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/racers/new">Add Racer</a>
+</body>
+</html>
